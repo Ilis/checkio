@@ -1,1 +1,1 @@
-print("Hello, checkio!")
+print("Hello, checkio and atom!")
