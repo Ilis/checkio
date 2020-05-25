@@ -61,6 +61,6 @@ St = namedtuple("St", ["i", "n", "s"])
 substacks = []
 stack_len = len(stacks[0])
 for i, stack in enumerate(stacks):
-    for n in range(stack_len + 1):
+    for n in range(1, stack_len + 1):
         substacks.append(St(i, n, sum(stack[:n])))
 pprint(substacks)
