@@ -1,6 +1,6 @@
-a = 5
-a += 1
-a *= 1
-a /= 1
-a //= 2
-print(a)
+a = 1
+b = {1: "one"}
+
+eq = a == b
+
+print(eq)
