@@ -13,7 +13,10 @@ from family_dinner_tests import TESTS
 test_stacks = TESTS["Medium"][0]
 
 stacks = test_stacks["input"][0]
+plates_count = test_stacks["input"][1]
+test_answer = test_stacks["answer"]
 pprint(stacks)
+print(f"{plates_count = }, {test_answer = }")
 stack_len = len(stacks[0])
 
 substacks = []
