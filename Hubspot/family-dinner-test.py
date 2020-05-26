@@ -26,7 +26,7 @@ for i, stack in enumerate(stacks):
         substacks.append(substack)
 
 queue = deque()
-for x in substacks:
-    queue.append(x)
+for i, n, b in substacks:
+    queue.append((i, n, b, [(i, n)]))
 
 pprint(queue)
