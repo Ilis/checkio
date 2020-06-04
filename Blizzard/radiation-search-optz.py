@@ -24,17 +24,10 @@ def checkio(matrix):
         while group_add:
             group_set |= group_add
             free_parts -= group_add
-            nbs = set()
-            # Iterate only on new members of group
-            for part in group_add:
-                # Get neighbours only from free parts
-                for nb in neighbours(part) & free_parts:
-                    nbs.add(nb)
-            group_add = nbs
             # All parts from free parts that a neighbours of new members
-            # group_add = {nb
-            #              for part in group_add
-            #              for nb in neighbours(part) & free_parts}
+            group_add = {nb
+                         for part in group_add
+                         for nb in neighbours(part) & free_parts}
 
         groups.append(group_set)
 
