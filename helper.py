@@ -1,4 +1,29 @@
-parts = {(1, 1, 1), (2, 2, 2), (3, 3, 3)}
-print(parts)
-new_set = set((parts.pop(),))
-print(new_set)
+data = [
+        [
+            {'user': 1, 'rating': 0},
+            {'user': 2, 'rating': 10},
+            {'user': 1, 'rating': 20},
+            {'user': 3, 'rating': 10}
+        ],
+        [
+            {'user': 4, 'rating': 4},
+            {'user': 2, 'rating': 80},
+            {'user': 1, 'rating': 20},
+            {'user': 1, 'rating': 10}
+        ],
+    ]
+
+
+def group(lst):
+    user_ratings = {}
+    for el in lst:
+        u, r = el["user"], el["rating"]
+        if u not in user_ratings:
+            user_ratings[u] = r
+        else:
+            user_ratings[u] += r
+    return [{"user": u, "rating": r} for u, r in user_ratings.items()]
+
+
+op = [group(d) for d in data]
+print(op)
