@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 data = [
         [
             {'user': 1, 'rating': 0},
@@ -15,13 +18,10 @@ data = [
 
 
 def group(lst):
-    user_ratings = {}
+    user_ratings = defaultdict(int)
     for el in lst:
         u, r = el["user"], el["rating"]
-        if u not in user_ratings:
-            user_ratings[u] = r
-        else:
-            user_ratings[u] += r
+        user_ratings[u] += r
     return [{"user": u, "rating": r} for u, r in user_ratings.items()]
 
 
