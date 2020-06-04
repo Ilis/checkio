@@ -1,25 +1,23 @@
 def checkio(matrix):
-    all_parts = {(i, j, matrix[i][j])
-                 for i in range(len(matrix))
-                 for j in range(len(matrix[0]))
-                 if matrix[i][j] > 0
-                 }
-    free_parts = set(all_parts)
+    free_parts = {(i, j, matrix[i][j])
+                  for i in range(len(matrix))
+                  for j in range(len(matrix[0]))
+                  if matrix[i][j] > 0
+                  }
 
     # Neighbour parts
     def neighbours(p):
         i_, j_, v_ = p
 
         return {(i, j, v)
-                for i, j, v in all_parts
+                for i, j, v in free_parts
                 if v == v_ and abs(i - i_) + abs(j - j_) == 1}
 
     # Build groups of parts
     groups = []
     while free_parts:
         group_set = set()
-        group_add = set()
-        group_add.add(free_parts.pop())
+        group_add = {free_parts.pop()}
         # While group still extends with new members
         while group_add:
             group_set |= group_add
@@ -27,7 +25,7 @@ def checkio(matrix):
             # All parts from free parts that a neighbours of new members
             group_add = {nb
                          for part in group_add
-                         for nb in neighbours(part) & free_parts}
+                         for nb in neighbours(part)}
 
         groups.append(group_set)
 
